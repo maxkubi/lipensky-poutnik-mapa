@@ -83,8 +83,7 @@ return maplibregl$1;
     white-space: nowrap;
   }
   .pin img { width: 22px; height: 22px; border-radius: 50%; background: #fff }
-  .pin--start { background: #2f8f68 }
-  .pin--finish { background: #c0392b }
+  .pin--ends { background: #2f8f68 }
 
   .tip .maplibregl-popup-content {
     padding: 10px 14px;
@@ -283,8 +282,8 @@ async function init() {
   lockView();
   map.on('resize', lockView);
 
-  marker(coords[0], 'start', 'START');
-  marker(coords[coords.length - 1], 'finish', 'CÍL ' + km(totalKm, 1));
+  // okruh začíná i končí na stejném místě, štítek je proto jen jeden
+  marker(coords[0], 'ends', 'START · CÍL ' + km(totalKm, 1));
 
   const popup = new maplibregl.Popup({
     closeButton: false, closeOnClick: false, offset: 14, className: 'tip'
