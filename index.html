@@ -234,6 +234,12 @@ async function init() {
       nextMilestone += 5000;
     }
   });
+  // poslední značka nese celou délku trasy, ne zaokrouhlený milník před cílem
+  const finish = coords.length - 1;
+  cumulative.forEach((m, i) => {
+    if (cumulative[finish] - m < 800) milestoneLabel[i] = '';
+  });
+  milestoneLabel[finish] = km(TOTAL_KM, 1);
 
   window.map = map;
   if (!map.isStyleLoaded()) {
