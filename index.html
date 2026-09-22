@@ -191,12 +191,11 @@ async function init() {
       nextMilestone += MILESTONE_STEP;
     }
   });
-  // poslední značka nese celou délku trasy, ne zaokrouhlený milník před cílem
+  // u cíle se značka vynechá, délku trasy nese štítek CÍL
   const finish = coords.length - 1;
   cumulative.forEach((m, i) => {
     if (cumulative[finish] - m < 800) milestoneLabel[i] = '';
   });
-  milestoneLabel[finish] = km(TOTAL_KM, 1);
 
   window.map = map;
   if (!map.isStyleLoaded()) {
